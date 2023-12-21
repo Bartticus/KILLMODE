@@ -1,0 +1,138 @@
+[gd_scene load_steps=20 format=3 uid="uid://dxqa7er8knhio"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_udlg5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcc4u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o4rt8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iieqk"]
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdi2t"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 1, 0.309804)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oa7ik"]
+material = SubResource("StandardMaterial3D_kdi2t")
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xu523"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fglyr"]
+material = SubResource("StandardMaterial3D_xu523")
+radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tcp6"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.647059, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_han60"]
+material = SubResource("StandardMaterial3D_3tcp6")
+size = Vector3(0.4, 0.2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ua2u"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xc64b"]
+material = SubResource("StandardMaterial3D_5ua2u")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ibb7"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hwm8t"]
+material = SubResource("StandardMaterial3D_0ibb7")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="Gradient" id="Gradient_8plpe"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_114ol"]
+gradient = SubResource("Gradient_8plpe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47aep"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 0.4)
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
+rim_texture = SubResource("GradientTexture1D_114ol")
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_6vi7b"]
+material = SubResource("StandardMaterial3D_47aep")
+inner_radius = 4.0
+outer_radius = 4.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8pjp5"]
+size = Vector3(1.2, 1, 1.2)
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_udlg5")
+
+[node name="PlayerHitBox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fcc4u")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o4rt8")
+
+[node name="AttackPivot" type="Node3D" parent="."]
+visible = false
+
+[node name="Attack" type="Area3D" parent="AttackPivot"]
+
+[node name="AttackHitBox" type="CollisionShape3D" parent="AttackPivot/Attack"]
+shape = SubResource("BoxShape3D_iieqk")
+disabled = true
+
+[node name="AttackMesh" type="MeshInstance3D" parent="AttackPivot/Attack"]
+mesh = SubResource("BoxMesh_oa7ik")
+
+[node name="WeaponPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="SwordMesh" type="MeshInstance3D" parent="WeaponPivot"]
+transform = Transform3D(4.77671e-16, 8.84481e-08, 1, 0.25, -8.84481e-08, 0, 1.09278e-08, 2.02346, -4.37114e-08, 0, 0, -1.02457)
+visible = false
+mesh = SubResource("CapsuleMesh_fglyr")
+skeleton = NodePath("../..")
+
+[node name="GunMesh" type="MeshInstance3D" parent="WeaponPivot"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_han60")
+
+[node name="KickMesh" type="MeshInstance3D" parent="WeaponPivot"]
+transform = Transform3D(1.91069e-15, 8.70677e-08, 1, 1, -8.70677e-08, 0, 4.37114e-08, 1.99188, -4.37114e-08, 0, 0, -0.471618)
+visible = false
+mesh = SubResource("CylinderMesh_xc64b")
+
+[node name="MagicMesh" type="MeshInstance3D" parent="WeaponPivot"]
+visible = false
+mesh = SubResource("SphereMesh_hwm8t")
+
+[node name="AttackRangeMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_6vi7b")
+
+[node name="PlayerHurtArea" type="Area3D" parent="."]
+collision_mask = 4
+
+[node name="PlayerHurtBox" type="CollisionShape3D" parent="PlayerHurtArea"]
+shape = SubResource("BoxShape3D_8pjp5")
+
+[connection signal="body_entered" from="PlayerHurtArea" to="." method="_on_player_hurt_area_body_entered"]

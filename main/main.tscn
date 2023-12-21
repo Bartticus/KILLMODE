@@ -1,0 +1,555 @@
+[gd_scene load_steps=28 format=3 uid="uid://dduxi8i8fii15"]
+
+[ext_resource type="Texture2D" uid="uid://c8nq55glypfp8" path="res://addons/kenney_prototype_tools/textures/light/texture_07.png" id="1_2a504"]
+[ext_resource type="Script" path="res://main/main.gd" id="1_531oh"]
+[ext_resource type="PackedScene" uid="uid://dxqa7er8knhio" path="res://player/player.tscn" id="3_ayk8u"]
+[ext_resource type="Texture2D" uid="uid://bhgq7euew6skx" path="res://addons/kenney_prototype_tools/textures/dark/texture_04.png" id="3_rueaq"]
+[ext_resource type="Theme" uid="uid://bwb27u320c3bj" path="res://ui/debug.tres" id="4_41hx4"]
+[ext_resource type="Script" path="res://scripts/debug.gd" id="5_hsp1v"]
+[ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="7_ai84e"]
+[ext_resource type="Theme" uid="uid://dsa3fn15ahaf4" path="res://ui/UI.tres" id="8_rpvn3"]
+[ext_resource type="PackedScene" uid="uid://hxsl7u6l73qd" path="res://ui/user_interface.tscn" id="9_j7kmx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ghgj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uyhtt"]
+sky_material = SubResource("ProceduralSkyMaterial_4ghgj")
+
+[sub_resource type="Environment" id="Environment_o3320"]
+background_mode = 2
+sky = SubResource("Sky_uyhtt")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8svbj"]
+size = Vector3(50, 2, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stmql"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.443137, 0.937255, 0.443137, 1)
+albedo_texture = ExtResource("1_2a504")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_tuyct"]
+material = SubResource("StandardMaterial3D_stmql")
+size = Vector3(20, 2, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt4ac"]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_rueaq")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_7rei3"]
+material = SubResource("StandardMaterial3D_rt4ac")
+size = Vector3(50, 2, 50)
+
+[sub_resource type="Curve3D" id="Curve3D_vsoiy"]
+bake_interval = 1.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_qps20"]
+bake_interval = 1.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_td1yb"]
+bake_interval = 1.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_sooft"]
+bake_interval = 1.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k1hyq"]
+radial_segments = 128
+rings = 100
+
+[sub_resource type="Gradient" id="Gradient_7cveg"]
+offsets = PackedFloat32Array(0, 0.596154)
+colors = PackedColorArray(0.205117, 0.205117, 0.205117, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_npu46"]
+gradient = SubResource("Gradient_7cveg")
+
+[sub_resource type="BoxMesh" id="BoxMesh_a1wlh"]
+
+[sub_resource type="Gradient" id="Gradient_cdptr"]
+offsets = PackedFloat32Array(0.99359, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_05q13"]
+gradient = SubResource("Gradient_cdptr")
+
+[node name="Main" type="Node"]
+script = ExtResource("1_531oh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o3320")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_split_1 = 0.01
+directional_shadow_split_3 = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10, 3.66652)
+projection = 1
+current = true
+size = 18.8
+far = 20.0
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="FloorCollision" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_8svbj")
+
+[node name="PlayAreaMesh" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_tuyct")
+
+[node name="ExtendedFloorMesh" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_7rei3")
+skeleton = NodePath("")
+
+[node name="Player" parent="." instance=ExtResource("3_ayk8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="SwordMesh" parent="Player/WeaponPivot" index="0"]
+visible = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="NorthPath" type="Path3D" parent="MoveTimer"]
+curve = SubResource("Curve3D_vsoiy")
+
+[node name="EastPath" type="Path3D" parent="MoveTimer"]
+curve = SubResource("Curve3D_qps20")
+
+[node name="SouthPath" type="Path3D" parent="MoveTimer"]
+curve = SubResource("Curve3D_td1yb")
+
+[node name="WestPath" type="Path3D" parent="MoveTimer"]
+curve = SubResource("Curve3D_sooft")
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 261.0
+offset_top = 10.0
+offset_right = 461.0
+offset_bottom = 50.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ArrowKeysPanel" type="Panel" parent="UserInterface"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 499.0
+offset_right = 239.0
+offset_bottom = 705.0
+theme = ExtResource("8_rpvn3")
+
+[node name="ActionIcon" type="TextureRect" parent="UserInterface/ArrowKeysPanel"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 111.0
+offset_right = 90.0
+offset_bottom = 207.0
+script = ExtResource("7_ai84e")
+action_name = &"attack_left"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ArrowKeysPanel/ActionIcon"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="ActionIcon2" type="TextureRect" parent="UserInterface/ArrowKeysPanel"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 40.0
+offset_right = 162.0
+offset_bottom = 136.0
+script = ExtResource("7_ai84e")
+action_name = &"attack_forward"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ArrowKeysPanel/ActionIcon2"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="ActionIcon3" type="TextureRect" parent="UserInterface/ArrowKeysPanel"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 111.0
+offset_right = 162.0
+offset_bottom = 207.0
+script = ExtResource("7_ai84e")
+action_name = &"attack_backward"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ArrowKeysPanel/ActionIcon3"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="ActionIcon4" type="TextureRect" parent="UserInterface/ArrowKeysPanel"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 111.0
+offset_right = 234.0
+offset_bottom = 207.0
+script = ExtResource("7_ai84e")
+action_name = &"attack_right"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ArrowKeysPanel/ActionIcon4"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="Label" type="Label" parent="UserInterface/ArrowKeysPanel"]
+layout_mode = 0
+offset_right = 223.0
+offset_bottom = 54.0
+theme = ExtResource("8_rpvn3")
+text = "Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModesPanel" type="Panel" parent="UserInterface"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 239.0
+offset_bottom = 482.0
+theme = ExtResource("8_rpvn3")
+
+[node name="ActionIcon" type="TextureRect" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 40.0
+offset_right = 93.0
+offset_bottom = 136.0
+script = ExtResource("7_ai84e")
+action_name = &"sword_mode"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ModesPanel/ActionIcon"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="ActionIcon2" type="TextureRect" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 122.0
+offset_right = 93.0
+offset_bottom = 218.0
+script = ExtResource("7_ai84e")
+action_name = &"gun_mode"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ModesPanel/ActionIcon2"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="ActionIcon3" type="TextureRect" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 204.0
+offset_right = 93.0
+offset_bottom = 300.0
+script = ExtResource("7_ai84e")
+action_name = &"kick_mode"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ModesPanel/ActionIcon3"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="ActionIcon4" type="TextureRect" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 286.0
+offset_right = 93.0
+offset_bottom = 382.0
+script = ExtResource("7_ai84e")
+action_name = &"magic_mode"
+favor_mouse = false
+
+[node name="ButtonFlash" type="PanelContainer" parent="UserInterface/ModesPanel/ActionIcon4"]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 82.0
+theme = ExtResource("4_41hx4")
+script = ExtResource("5_hsp1v")
+
+[node name="Label" type="Label" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_right = 223.0
+offset_bottom = 54.0
+theme = ExtResource("8_rpvn3")
+text = "Modes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 54.0
+offset_right = 232.0
+offset_bottom = 122.0
+theme = ExtResource("8_rpvn3")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 35
+text = "Sword"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 136.0
+offset_right = 232.0
+offset_bottom = 204.0
+theme = ExtResource("8_rpvn3")
+theme_override_colors/font_color = Color(0.945, 0.505972, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 35
+text = "Gun"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 218.0
+offset_right = 232.0
+offset_bottom = 286.0
+theme = ExtResource("8_rpvn3")
+theme_override_colors/font_color = Color(0, 0.611765, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 35
+text = "Kick"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="UserInterface/ModesPanel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 300.0
+offset_right = 232.0
+offset_bottom = 368.0
+theme = ExtResource("8_rpvn3")
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 35
+text = "Magic"
+vertical_alignment = 1
+
+[node name="ScoresPanel" type="Panel" parent="UserInterface"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1038.0
+offset_top = 20.0
+offset_right = 1261.0
+offset_bottom = 298.0
+theme = ExtResource("8_rpvn3")
+
+[node name="Label" type="Label" parent="UserInterface/ScoresPanel"]
+layout_mode = 0
+offset_right = 223.0
+offset_bottom = 54.0
+theme = ExtResource("8_rpvn3")
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RulesPanel" type="Panel" parent="UserInterface"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1038.0
+offset_top = 312.0
+offset_right = 1261.0
+offset_bottom = 705.0
+theme = ExtResource("8_rpvn3")
+
+[node name="Label" type="Label" parent="UserInterface/RulesPanel"]
+layout_mode = 0
+offset_right = 223.0
+offset_bottom = 54.0
+theme = ExtResource("8_rpvn3")
+text = "Rules"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UserInterface/RulesPanel"]
+layout_mode = 0
+offset_right = 223.0
+offset_bottom = 393.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 18
+text = "Match your attack mode to the enemy's mode.
+
+
+Attack -OR- switch modes on the beat.
+
+
+Keep up as the tempo increases and try to set a high score!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TimerBar" type="MeshInstance2D" parent="UserInterface"]
+visible = false
+position = Vector2(638.257, 682.513)
+rotation = 1.5708
+scale = Vector2(13.5834, 337.484)
+mesh = SubResource("CapsuleMesh_k1hyq")
+texture = SubResource("GradientTexture1D_npu46")
+
+[node name="MiddlePoint" type="MeshInstance2D" parent="UserInterface"]
+visible = false
+position = Vector2(638, 682)
+scale = Vector2(9.5, 40.5)
+mesh = SubResource("BoxMesh_a1wlh")
+texture = SubResource("GradientTexture1D_05q13")
+
+[node name="UserInterface2" parent="." instance=ExtResource("9_j7kmx")]
+
+[node name="ScoreLabel" parent="UserInterface2" index="1"]
+offset_left = 1099.0
+offset_top = 106.0
+offset_right = 1206.0
+offset_bottom = 137.0
+text = "Current: 0"
+
+[node name="FinalScore" parent="UserInterface2/Retry" index="2"]
+offset_left = 554.0
+offset_top = 300.0
+offset_right = 702.0
+offset_bottom = 331.0
+
+[node name="FloatingText" parent="UserInterface2" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.352691, 0.93574, 0, -0.93574, 0.352691, 6.64648, 6.98123, -4.95046)
+visible = false
+
+[node name="GameStart" parent="UserInterface2" index="4"]
+volume_db = 0.0
+
+[node name="HighScore" parent="UserInterface2" index="5"]
+offset_left = 1081.0
+offset_top = 192.0
+offset_right = 1229.0
+offset_bottom = 223.0
+text = "High Score:"
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+
+[editable path="Player"]
+[editable path="UserInterface2"]
+[editable path="UserInterface2/FloatingText"]

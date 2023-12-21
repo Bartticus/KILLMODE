@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dsa3fn15ahaf4"]
+
+[sub_resource type="SystemFont" id="SystemFont_d8i25"]
+font_names = PackedStringArray("BankGothic Lt BT")
+multichannel_signed_distance_field = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lhf6"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 0.592157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="SystemFont" id="SystemFont_18lqh"]
+
+[resource]
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = -4
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 15
+Label/font_sizes/font_size = 40
+Label/fonts/font = SubResource("SystemFont_d8i25")
+Panel/styles/panel = SubResource("StyleBoxFlat_0lhf6")
+TextEdit/fonts/font = SubResource("SystemFont_18lqh")

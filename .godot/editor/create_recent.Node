@@ -1,0 +1,15 @@
+AnimationPlayer
+MeshInstance2D
+CollisionShape3D
+Area3D
+Label
+TextEdit
+MeshInstance3D
+ActionIcon
+Debug
+MarginContainer
+ColorRect
+TextureRect
+Panel
+Timer
+StaticBody3D

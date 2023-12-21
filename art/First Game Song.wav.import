@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4lqo74q6l07s"
+path="res://.godot/imported/First Game Song.wav-1541693b5fb329a1b78608272f6dc8f3.sample"
+
+[deps]
+
+source_file="res://art/First Game Song.wav"
+dest_files=["res://.godot/imported/First Game Song.wav-1541693b5fb329a1b78608272f6dc8f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

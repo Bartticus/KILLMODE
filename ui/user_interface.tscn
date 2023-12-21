@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://hxsl7u6l73qd"]
+
+[ext_resource type="Theme" uid="uid://dsa3fn15ahaf4" path="res://ui/UI.tres" id="2_kfbsj"]
+[ext_resource type="Script" path="res://ui/user_interface.gd" id="2_nu2x1"]
+[ext_resource type="PackedScene" uid="uid://b1g1thgld2pac" path="res://ui/floating_text.tscn" id="3_15kwv"]
+[ext_resource type="AudioStream" uid="uid://c6j2156figkdo" path="res://art/Game_start.wav" id="4_yhp8i"]
+
+[sub_resource type="Theme" id="Theme_pwxub"]
+default_font_size = 22
+
+[node name="UserInterface2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pwxub")
+script = ExtResource("2_nu2x1")
+
+[node name="StartLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -241.5
+offset_top = 158.0
+offset_right = 241.5
+offset_bottom = 223.0
+grow_horizontal = 2
+theme = ExtResource("2_kfbsj")
+theme_override_colors/font_color = Color(0.929412, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "KILL MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="StartLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = 146.5
+offset_right = 231.0
+offset_bottom = 270.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Press Enter to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1128.0
+offset_top = 64.0
+offset_right = 1216.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+text = "Score: 0"
+
+[node name="Retry" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.317647)
+
+[node name="PressEnter" type="Label" parent="Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.5
+offset_top = 41.5
+offset_right = 103.5
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_kfbsj")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Press Enter to retry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathLabel" type="Label" parent="Retry"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -241.5
+offset_top = 158.0
+offset_right = 241.5
+offset_bottom = 223.0
+grow_horizontal = 2
+theme = ExtResource("2_kfbsj")
+theme_override_colors/font_color = Color(0.929412, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "You died :("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScore" type="Label" parent="Retry"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 112.0
+offset_right = 476.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+text = "Final Score: 0"
+
+[node name="FloatingText" parent="." instance=ExtResource("3_15kwv")]
+
+[node name="GameStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yhp8i")
+volume_db = 10.0
+
+[node name="HighScore" type="Label" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 855.0
+offset_top = 112.0
+offset_right = 1003.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+text = "High Score: 0"
+
+[editable path="FloatingText"]
