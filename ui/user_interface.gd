@@ -7,6 +7,7 @@ func _ready():
 	$Retry.hide()
 	$ScoreLabel.hide()
 	$FloatingText.hide()
+	$FloatingText/Pivot/MeshInstance3D.mesh.text = "0"
 	
 	var player = get_node("/root/Main/Player")
 	player.die.connect(_on_player_die)
@@ -14,7 +15,6 @@ func _ready():
 
 func _on_player_die():
 	multiplier = 1
-	#$FloatingText/Pivot/MeshInstance3D.mesh.text = "0"
 	$FloatingText/AnimationPlayer.play("RESET", 1.0)
 
 func _on_enemy_kill():

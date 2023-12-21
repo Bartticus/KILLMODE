@@ -6,6 +6,9 @@ extends Node
 func _ready():
 	randomize() #Randomize rng on startup
 	
+	$MusicPlayer.play()
+	$UserInterface2/HighScore.text = "High Score: %s" % load_score()
+	
 	$Player.die.connect(_on_player_die)
 
 func reduce_timers(): #Decrease timer lengths to increase difficulty over time
@@ -59,6 +62,8 @@ func _unhandled_input(event):
 		$SpawnTimer.start()
 
 func _on_player_die():
+	$MusicPlayer.stop()
+	$DieSound.play()
 	await get_tree().create_timer(1).timeout
 	$UserInterface2/ScoreLabel.hide()
 	$UserInterface2/FloatingText.hide()

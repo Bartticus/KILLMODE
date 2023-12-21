@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dduxi8i8fii15"]
+[gd_scene load_steps=30 format=3 uid="uid://dduxi8i8fii15"]
 
 [ext_resource type="Texture2D" uid="uid://c8nq55glypfp8" path="res://addons/kenney_prototype_tools/textures/light/texture_07.png" id="1_2a504"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_531oh"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="7_ai84e"]
 [ext_resource type="Theme" uid="uid://dsa3fn15ahaf4" path="res://ui/UI.tres" id="8_rpvn3"]
 [ext_resource type="PackedScene" uid="uid://hxsl7u6l73qd" path="res://ui/user_interface.tscn" id="9_j7kmx"]
+[ext_resource type="PackedScene" uid="uid://5eeqelnwaggd" path="res://ui/music_player.tscn" id="10_600t5"]
+[ext_resource type="AudioStream" uid="uid://dhqon1qh3mrjf" path="res://art/Die_sound.wav" id="11_ijqkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ghgj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -496,7 +498,7 @@ theme_override_font_sizes/font_size = 18
 text = "Match your attack mode to the enemy's mode.
 
 
-Attack -OR- switch modes on the beat.
+Attack when the enemy enters your range to kill them.
 
 
 Keep up as the tempo increases and try to set a high score!"
@@ -522,11 +524,12 @@ texture = SubResource("GradientTexture1D_05q13")
 [node name="UserInterface2" parent="." instance=ExtResource("9_j7kmx")]
 
 [node name="ScoreLabel" parent="UserInterface2" index="1"]
-offset_left = 1099.0
+offset_left = 1038.0
 offset_top = 106.0
-offset_right = 1206.0
+offset_right = 1261.0
 offset_bottom = 137.0
 text = "Current: 0"
+horizontal_alignment = 1
 
 [node name="FinalScore" parent="UserInterface2/Retry" index="2"]
 offset_left = 554.0
@@ -542,11 +545,19 @@ visible = false
 volume_db = 0.0
 
 [node name="HighScore" parent="UserInterface2" index="5"]
-offset_left = 1081.0
+offset_left = 1038.0
 offset_top = 192.0
-offset_right = 1229.0
+offset_right = 1261.0
 offset_bottom = 223.0
 text = "High Score:"
+horizontal_alignment = 1
+
+[node name="MusicPlayer" parent="." instance=ExtResource("10_600t5")]
+autoplay = false
+
+[node name="DieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ijqkr")
+volume_db = -10.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 

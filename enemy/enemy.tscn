@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_8e22k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_joc22"]
+size = Vector3(0.9, 0.9, 0.9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnb8q"]
 resource_local_to_scene = true
@@ -11,6 +12,7 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxMesh" id="BoxMesh_272yf"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_tnb8q")
+size = Vector3(0.9, 0.9, 0.9)
 
 [node name="Enemy" type="RigidBody3D"]
 collision_layer = 4

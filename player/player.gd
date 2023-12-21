@@ -13,6 +13,7 @@ var attack_range: float
 var attack_mode: String = Global.combat_modes[0]
 
 @onready var move_timer = get_node("/root/Main/MoveTimer")
+var last_anim_played: String
 #var action_taken: bool = false
 
 func _physics_process(_delta):
@@ -55,6 +56,13 @@ func attack_mode_manager():
 	$AttackRangeMesh.mesh.outer_radius = attack_range + 0.1
 
 func attack(direction: Vector3):
+	if last_anim_played == attack_mode:
+		$AnimationPlayer.play_backwards(attack_mode)
+		last_anim_played = ""
+	else:
+		$AnimationPlayer.play(attack_mode)
+		last_anim_played = attack_mode
+	
 	#Move weapon mesh in direction of attack
 	$WeaponPivot.position = direction
 	$WeaponPivot.look_at(position + direction * 2)
