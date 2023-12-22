@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dduxi8i8fii15"]
+[gd_scene load_steps=30 format=3 uid="uid://dduxi8i8fii15"]
 
 [ext_resource type="Texture2D" uid="uid://c8nq55glypfp8" path="res://addons/kenney_prototype_tools/textures/light/texture_07.png" id="1_2a504"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_531oh"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="7_ai84e"]
 [ext_resource type="Theme" uid="uid://dsa3fn15ahaf4" path="res://ui/UI.tres" id="8_rpvn3"]
 [ext_resource type="PackedScene" uid="uid://hxsl7u6l73qd" path="res://ui/user_interface.tscn" id="9_j7kmx"]
+[ext_resource type="PackedScene" uid="uid://5eeqelnwaggd" path="res://ui/music_player.tscn" id="10_600t5"]
+[ext_resource type="AudioStream" uid="uid://dhqon1qh3mrjf" path="res://art/Die_sound.wav" id="11_ijqkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ghgj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -136,7 +138,16 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="SwordMesh" parent="Player/WeaponPivot" index="0"]
-visible = true
+transform = Transform3D(3.27608e-12, 7.3249e-06, 1, 0.25, -7.3249e-06, -9.9245e-21, 9.04998e-07, 2.02346, -3.61999e-06, 0, 0, -1.025)
+
+[node name="GunMesh" parent="Player/WeaponPivot" index="1"]
+transform = Transform3D(-3.61999e-06, -1, -3.61999e-06, 0, -3.61999e-06, 1, -1, 3.61999e-06, 1.31043e-11, 0, 0, 0.2)
+
+[node name="KickMesh" parent="Player/WeaponPivot" index="2"]
+transform = Transform3D(1.91069e-15, 3.49691e-08, 1, 1, -3.49691e-08, -4.61653e-21, 4.37114e-08, 0.8, -4.37114e-08, 0, 0, 0.12)
+
+[node name="OpenBook1" parent="Player/WeaponPivot/MagicMesh" index="0"]
+transform = Transform3D(0.065, 0, 0, 0, 0.0424749, -0.0492024, 0, 0.0492024, 0.0424749, 0, -0.035061, -0.0738543)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -496,7 +507,7 @@ theme_override_font_sizes/font_size = 18
 text = "Match your attack mode to the enemy's mode.
 
 
-Attack -OR- switch modes on the beat.
+Attack when the enemy enters your range to kill them.
 
 
 Keep up as the tempo increases and try to set a high score!"
@@ -521,18 +532,45 @@ texture = SubResource("GradientTexture1D_05q13")
 
 [node name="UserInterface2" parent="." instance=ExtResource("9_j7kmx")]
 
+[node name="InfoLabel" parent="UserInterface2/StartLabel" index="0"]
+offset_left = 71.0
+offset_top = 78.0
+offset_right = 533.0
+offset_bottom = 202.0
+
+[node name="TutLabel1" parent="UserInterface2/StartLabel" index="3"]
+layout_mode = 0
+offset_left = -232.0
+offset_top = 280.0
+offset_right = 307.0
+offset_bottom = 637.0
+
+[node name="TutLabel2" parent="UserInterface2/StartLabel" index="5"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 280.0
+offset_right = 798.0
+offset_bottom = 427.0
+
 [node name="ScoreLabel" parent="UserInterface2" index="1"]
-offset_left = 1099.0
+offset_left = 1038.0
 offset_top = 106.0
-offset_right = 1206.0
+offset_right = 1261.0
 offset_bottom = 137.0
 text = "Current: 0"
+horizontal_alignment = 1
+
+[node name="PressEnter" parent="UserInterface2/Retry" index="0"]
+offset_left = 409.0
+offset_top = 276.5
+offset_right = 871.001
+offset_bottom = 319.5
 
 [node name="FinalScore" parent="UserInterface2/Retry" index="2"]
-offset_left = 554.0
-offset_top = 300.0
-offset_right = 702.0
-offset_bottom = 331.0
+offset_left = 1080.0
+offset_top = 105.0
+offset_right = 1228.0
+offset_bottom = 136.0
 
 [node name="FloatingText" parent="UserInterface2" index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.352691, 0.93574, 0, -0.93574, 0.352691, 6.64648, 6.98123, -4.95046)
@@ -542,11 +580,19 @@ visible = false
 volume_db = 0.0
 
 [node name="HighScore" parent="UserInterface2" index="5"]
-offset_left = 1081.0
+offset_left = 1038.0
 offset_top = 192.0
-offset_right = 1229.0
+offset_right = 1261.0
 offset_bottom = 223.0
 text = "High Score:"
+horizontal_alignment = 1
+
+[node name="MusicPlayer" parent="." instance=ExtResource("10_600t5")]
+autoplay = false
+
+[node name="DieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ijqkr")
+volume_db = -15.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 

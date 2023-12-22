@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="KILLMODE"
+config/version="1.1"
 run/main_scene="res://main/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://BootSplash.PNG"
@@ -19,7 +20,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scripts/global.gd"
-MusicPlayer="*res://ui/music_player.tscn"
 
 [display]
 
@@ -30,6 +30,10 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ActionIcon/plugin.cfg")
+
+[filesystem]
+
+import/fbx/enabled=false
 
 [input]
 

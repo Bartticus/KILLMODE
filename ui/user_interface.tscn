@@ -1,12 +1,123 @@
-[gd_scene load_steps=6 format=3 uid="uid://hxsl7u6l73qd"]
+[gd_scene load_steps=11 format=3 uid="uid://hxsl7u6l73qd"]
 
 [ext_resource type="Theme" uid="uid://dsa3fn15ahaf4" path="res://ui/UI.tres" id="2_kfbsj"]
 [ext_resource type="Script" path="res://ui/user_interface.gd" id="2_nu2x1"]
 [ext_resource type="PackedScene" uid="uid://b1g1thgld2pac" path="res://ui/floating_text.tscn" id="3_15kwv"]
 [ext_resource type="AudioStream" uid="uid://c6j2156figkdo" path="res://art/Game_start.wav" id="4_yhp8i"]
+[ext_resource type="Texture2D" uid="uid://4epe08q5cqsf" path="res://art/Tutorial-1.PNG" id="5_agg38"]
+[ext_resource type="Texture2D" uid="uid://dx8ydkry7aseb" path="res://art/Tutorial-2.PNG" id="6_ehynw"]
 
 [sub_resource type="Theme" id="Theme_pwxub"]
 default_font_size = 22
+
+[sub_resource type="Animation" id="Animation_fo5n0"]
+resource_name = "Enter"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Retry/PressEnter:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Retry/PressEnter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(409, 276.5), Vector2(361, 265)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartLabel/InfoLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StartLabel/InfoLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(71, 78), Vector2(26, 78)]
+}
+
+[sub_resource type="Animation" id="Animation_xo64e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Retry/PressEnter:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Retry/PressEnter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(409, 276.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartLabel/InfoLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StartLabel/InfoLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(71, 78)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yd3nn"]
+_data = {
+"Enter": SubResource("Animation_fo5n0"),
+"RESET": SubResource("Animation_xo64e")
+}
 
 [node name="UserInterface2" type="Control"]
 layout_mode = 3
@@ -23,10 +134,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -241.5
-offset_top = 158.0
-offset_right = 241.5
-offset_bottom = 223.0
+offset_left = -302.0
+offset_top = 62.0
+offset_right = 302.0
+offset_bottom = 169.0
 grow_horizontal = 2
 theme = ExtResource("2_kfbsj")
 theme_override_colors/font_color = Color(0.929412, 0, 0, 1)
@@ -42,10 +153,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -231.0
-offset_top = 146.5
-offset_right = 231.0
-offset_bottom = 270.5
+offset_left = 71.0
+offset_top = 78.0
+offset_right = 533.0
+offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -53,6 +164,56 @@ theme_override_constants/outline_size = 10
 text = "Press Enter to start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Retry2" type="ColorRect" parent="StartLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.0
+offset_top = -62.0
+offset_right = 338.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.317647)
+
+[node name="Tutorial-1" type="Sprite2D" parent="StartLabel"]
+position = Vector2(26.4638, 447.375)
+scale = Vector2(0.598858, 0.598858)
+texture = ExtResource("5_agg38")
+
+[node name="TutLabel1" type="Label" parent="StartLabel"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 277.0
+offset_right = 301.0
+offset_bottom = 416.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 25
+text = "Enemies can only be killed if their color matches your weapon"
+autowrap_mode = 2
+
+[node name="Tutorial-2" type="Sprite2D" parent="StartLabel"]
+position = Vector2(596.989, 447.825)
+scale = Vector2(0.679341, 0.679341)
+texture = ExtResource("6_ehynw")
+
+[node name="TutLabel2" type="Label" parent="StartLabel"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 276.0
+offset_right = 790.0
+offset_bottom = 423.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 25
+text = "Attack in the direction they approach from when in range"
+autowrap_mode = 2
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
@@ -81,10 +242,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -103.5
-offset_top = 41.5
-offset_right = 103.5
-offset_bottom = 72.5
+offset_left = 409.0
+offset_top = 276.5
+offset_right = 871.001
+offset_bottom = 319.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_kfbsj")
@@ -113,10 +274,10 @@ vertical_alignment = 1
 
 [node name="FinalScore" type="Label" parent="Retry"]
 layout_mode = 0
-offset_left = 328.0
-offset_top = 112.0
-offset_right = 476.0
-offset_bottom = 143.0
+offset_left = 1096.0
+offset_top = 64.0
+offset_right = 1244.0
+offset_bottom = 95.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
@@ -139,5 +300,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
 text = "High Score: 0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yd3nn")
+}
+autoplay = "Enter"
 
 [editable path="FloatingText"]

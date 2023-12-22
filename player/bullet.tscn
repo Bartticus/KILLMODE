@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4nkyxob5lnkj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dh7sp"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tcp6"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.647059, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_akc0f"]
+material = SubResource("StandardMaterial3D_3tcp6")
+radius = 0.05
+height = 0.2
+
+[node name="Bullet" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 4
+
+[node name="BulletHitBox" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_dh7sp")
+
+[node name="BulletMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_akc0f")
+skeleton = NodePath("../..")
