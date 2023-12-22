@@ -1,23 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxqa7er8knhio"]
+[gd_scene load_steps=31 format=3 uid="uid://dxqa7er8knhio"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_udlg5"]
 [ext_resource type="ArrayMesh" uid="uid://c5p773ia8sbom" path="res://art/Sting-Sword-lowpoly.obj" id="2_pve5i"]
+[ext_resource type="ArrayMesh" uid="uid://cq35j4sd8xuut" path="res://art/11539_leg_01_V1.obj" id="3_4nfqk"]
+[ext_resource type="ArrayMesh" uid="uid://dpqso550j6hvx" path="res://art/deagle.obj" id="3_88n3l"]
+[ext_resource type="ArrayMesh" uid="uid://6og6qb3crh1u" path="res://art/open book 1.obj" id="5_p0aen"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fcc4u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o4rt8"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_iieqk"]
-size = Vector3(2, 0.5, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdi2t"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(0, 0, 1, 0.309804)
-
-[sub_resource type="BoxMesh" id="BoxMesh_oa7ik"]
-material = SubResource("StandardMaterial3D_kdi2t")
-size = Vector3(2, 0.5, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nl0y"]
 transparency = 1
@@ -32,32 +23,47 @@ radius = 0.15
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8ukk"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.647059, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_han60"]
+material = SubResource("StandardMaterial3D_c8ukk")
+size = Vector3(0.4, 0.2, 0.1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tcp6"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.647059, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_han60"]
-material = SubResource("StandardMaterial3D_3tcp6")
-size = Vector3(0.4, 0.2, 0.1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmjcy"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 0, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xc64b"]
+material = SubResource("StandardMaterial3D_cmjcy")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ua2u"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 1, 0, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_xc64b"]
-material = SubResource("StandardMaterial3D_5ua2u")
-top_radius = 0.25
-bottom_radius = 0.25
-height = 1.5
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v3vi"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 1, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hwm8t"]
+material = SubResource("StandardMaterial3D_7v3vi")
+radius = 0.2
+height = 0.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ibb7"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_hwm8t"]
-material = SubResource("StandardMaterial3D_0ibb7")
-radius = 0.2
-height = 0.4
 
 [sub_resource type="Gradient" id="Gradient_8plpe"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -85,6 +91,192 @@ outer_radius = 4.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8pjp5"]
 size = Vector3(1.01, 1, 1.01)
+
+[sub_resource type="Animation" id="Animation_kd5ss"]
+resource_name = "Gun"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivot/GunMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1),
+"transitions": PackedFloat32Array(0.574349, 1.7411, 0.574349),
+"update": 0,
+"values": [Vector3(-1.5708, 1.5708, 0), Vector3(-0.815187, 1.75163, 0.605834), Vector3(-1.5708, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/GunMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1),
+"transitions": PackedFloat32Array(0.574349, 1.7411, 0.574349),
+"update": 0,
+"values": [Vector3(0, 0, -0.2), Vector3(-0.398445, 0.271943, 0.15), Vector3(0, 0, -0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_jtbr6"]
+resource_name = "Kick"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivot/KickMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(0.707106, 2.54912, 1.41421),
+"update": 0,
+"values": [Vector3(0, 0, 0.12), Vector3(0, 0, -0.471618), Vector3(0, 0, 0.12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/KickMesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(0.707106, 2.54912, 1.41421),
+"update": 0,
+"values": [Vector3(1, 0.8, 1), Vector3(1, 1.99188, 1), Vector3(1, 0.8, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f5gqt"]
+resource_name = "Magic"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivot/MagicMesh/OpenBook1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.1),
+"transitions": PackedFloat32Array(0.5, 3.03143, 1),
+"update": 0,
+"values": [Vector3(0.85865, 0, 0), Vector3(0.429944, 0, 0), Vector3(0.85865, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/MagicMesh/OpenBook1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.1),
+"transitions": PackedFloat32Array(0.5, 3.03143, 1),
+"update": 0,
+"values": [Vector3(0, -0.035061, -0.0738543), Vector3(0, -0.160831, -0.339931), Vector3(0, -0.035061, -0.0738543)]
+}
+
+[sub_resource type="Animation" id="Animation_20lec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivot/SwordMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9.9245e-21, 1.5708, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/SwordMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.025)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivot/KickMesh:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponPivot/KickMesh:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.8, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponPivot/GunMesh:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 1.5708, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponPivot/GunMesh:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WeaponPivot/MagicMesh/OpenBook1:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.85865, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WeaponPivot/MagicMesh/OpenBook1:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.035061, -0.0738543)]
+}
 
 [sub_resource type="Animation" id="Animation_bqmdb"]
 resource_name = "Sword"
@@ -115,42 +307,18 @@ tracks/1/keys = {
 "values": [Vector3(-0.5, 0, -1.025), Vector3(0.5, 0, -1.025)]
 }
 
-[sub_resource type="Animation" id="Animation_20lec"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponPivot/SwordMesh:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(9.9245e-21, 1.5708, 1.5708)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponPivot/SwordMesh:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.025)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fb16m"]
 _data = {
+"Gun": SubResource("Animation_kd5ss"),
+"Kick": SubResource("Animation_jtbr6"),
+"Magic": SubResource("Animation_f5gqt"),
 "RESET": SubResource("Animation_20lec"),
 "Sword": SubResource("Animation_bqmdb")
 }
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_udlg5")
 
 [node name="PlayerHitBox" type="CollisionShape3D" parent="."]
@@ -159,25 +327,13 @@ shape = SubResource("BoxShape3D_fcc4u")
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_o4rt8")
 
-[node name="AttackPivot" type="Node3D" parent="."]
-visible = false
-
-[node name="Attack" type="Area3D" parent="AttackPivot"]
-
-[node name="AttackHitBox" type="CollisionShape3D" parent="AttackPivot/Attack"]
-shape = SubResource("BoxShape3D_iieqk")
-disabled = true
-
-[node name="AttackMesh" type="MeshInstance3D" parent="AttackPivot/Attack"]
-mesh = SubResource("BoxMesh_oa7ik")
-
 [node name="WeaponPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="SwordMesh" type="MeshInstance3D" parent="WeaponPivot"]
-transform = Transform3D(4.77674e-16, 8.84482e-08, 1, 0.25, -8.84482e-08, -9.92449e-21, 1.09278e-08, 2.02346, -4.37114e-08, 0, 0, -1.025)
+transform = Transform3D(3.27608e-12, 7.3249e-06, 1, 0.25, -7.3249e-06, -9.9245e-21, 9.04998e-07, 2.02346, -3.61999e-06, 0, 0, -1.025)
+visible = false
 mesh = SubResource("CapsuleMesh_fglyr")
-skeleton = NodePath("../..")
 
 [node name="Sting-sword-lowpoly" type="MeshInstance3D" parent="WeaponPivot/SwordMesh"]
 transform = Transform3D(-2.79753e-09, 0.263, 0, 2.79753e-09, 5.55112e-16, 0.036, 0.064, 1.14961e-08, -1.57361e-09, 3.27623e-08, 0.0926032, -8.19057e-09)
@@ -189,18 +345,36 @@ surface_material_override/2 = SubResource("StandardMaterial3D_xu523")
 surface_material_override/3 = SubResource("StandardMaterial3D_xu523")
 
 [node name="GunMesh" type="MeshInstance3D" parent="WeaponPivot"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-3.61999e-06, -1, -3.61999e-06, 0, -3.61999e-06, 1, -1, 3.61999e-06, 1.31043e-11, 0, 0, 0.2)
 visible = false
 mesh = SubResource("BoxMesh_han60")
 
+[node name="Deagle" type="MeshInstance3D" parent="WeaponPivot/GunMesh"]
+transform = Transform3D(9.83506e-09, 6.55671e-09, -0.075, -1.13247e-08, -0.075, -6.55671e-09, -0.075, 1.13247e-08, -9.83506e-09, -0.482568, 0, -0.0893295)
+mesh = ExtResource("3_88n3l")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3tcp6")
+
 [node name="KickMesh" type="MeshInstance3D" parent="WeaponPivot"]
-transform = Transform3D(1.91069e-15, 8.70677e-08, 1, 1, -8.70677e-08, 0, 4.37114e-08, 1.99188, -4.37114e-08, 0, 0, -0.471618)
+transform = Transform3D(1.91069e-15, 3.49691e-08, 1, 1, -3.49691e-08, -4.61653e-21, 4.37114e-08, 0.8, -4.37114e-08, 0, 0, 0.12)
 visible = false
 mesh = SubResource("CylinderMesh_xc64b")
+
+[node name="11539Leg01V1" type="MeshInstance3D" parent="WeaponPivot/KickMesh"]
+transform = Transform3D(0.00261467, -0.0298858, -7.83811e-10, 5.55112e-17, -1.31134e-09, 0.018, -0.0298858, -0.00261467, -6.85747e-11, 0.127355, -0.803637, -0.0412877)
+mesh = ExtResource("3_4nfqk")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ua2u")
 
 [node name="MagicMesh" type="MeshInstance3D" parent="WeaponPivot"]
 visible = false
 mesh = SubResource("SphereMesh_hwm8t")
+
+[node name="OpenBook1" type="MeshInstance3D" parent="WeaponPivot/MagicMesh"]
+transform = Transform3D(0.065, 0, 0, 0, 0.0424749, -0.0492024, 0, 0.0492024, 0.0424749, 0, -0.035061, -0.0738543)
+material_override = SubResource("StandardMaterial3D_0ibb7")
+mesh = ExtResource("5_p0aen")
+skeleton = NodePath("../../..")
 
 [node name="AttackRangeMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("TorusMesh_6vi7b")

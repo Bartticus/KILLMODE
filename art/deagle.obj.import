@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpqso550j6hvx"
+path="res://.godot/imported/deagle.obj-2511e1edb407694d1b407e5994171627.mesh"
+
+[deps]
+
+files=["res://.godot/imported/deagle.obj-2511e1edb407694d1b407e5994171627.mesh"]
+
+source_file="res://art/deagle.obj"
+dest_files=["res://.godot/imported/deagle.obj-2511e1edb407694d1b407e5994171627.mesh", "res://.godot/imported/deagle.obj-2511e1edb407694d1b407e5994171627.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
