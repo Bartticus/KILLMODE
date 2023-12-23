@@ -1,16 +1,24 @@
-[gd_scene load_steps=30 format=3 uid="uid://dduxi8i8fii15"]
+[gd_scene load_steps=55 format=3 uid="uid://dduxi8i8fii15"]
 
 [ext_resource type="Texture2D" uid="uid://c8nq55glypfp8" path="res://addons/kenney_prototype_tools/textures/light/texture_07.png" id="1_2a504"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_531oh"]
+[ext_resource type="Texture2D" uid="uid://c2q2uw6xgb3fx" path="res://textures/Sci-fi_Metal_Plate_003_basecolor.jpg" id="2_ckvwa"]
+[ext_resource type="Texture2D" uid="uid://bax8hex865qv7" path="res://textures/Sci-fi_Metal_Plate_003_ambientOcclusion.jpg" id="3_8ewu1"]
 [ext_resource type="PackedScene" uid="uid://dxqa7er8knhio" path="res://player/player.tscn" id="3_ayk8u"]
 [ext_resource type="Texture2D" uid="uid://bhgq7euew6skx" path="res://addons/kenney_prototype_tools/textures/dark/texture_04.png" id="3_rueaq"]
 [ext_resource type="Theme" uid="uid://bwb27u320c3bj" path="res://ui/debug.tres" id="4_41hx4"]
+[ext_resource type="Texture2D" uid="uid://dyop6q0u2rhfc" path="res://textures/Sci-fi_Metal_Plate_003_height.png" id="4_jeowj"]
+[ext_resource type="Texture2D" uid="uid://by5vo41e7wp6p" path="res://textures/Sci-fi_Metal_Plate_003_metallic.jpg" id="5_5s6ug"]
 [ext_resource type="Script" path="res://scripts/debug.gd" id="5_hsp1v"]
+[ext_resource type="Texture2D" uid="uid://i374fy3pa74t" path="res://textures/Sci-fi_Metal_Plate_003_normal.jpg" id="6_2j8ea"]
 [ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="7_ai84e"]
+[ext_resource type="Texture2D" uid="uid://b7b2i5s8n8s28" path="res://textures/Sci-fi_Metal_Plate_003_roughness.jpg" id="7_vb2yy"]
 [ext_resource type="Theme" uid="uid://dsa3fn15ahaf4" path="res://ui/UI.tres" id="8_rpvn3"]
+[ext_resource type="Texture2D" uid="uid://dx72wh70cgvp3" path="res://textures/2k_stars_milky_way.jpg" id="9_dbg7r"]
 [ext_resource type="PackedScene" uid="uid://hxsl7u6l73qd" path="res://ui/user_interface.tscn" id="9_j7kmx"]
 [ext_resource type="PackedScene" uid="uid://5eeqelnwaggd" path="res://ui/music_player.tscn" id="10_600t5"]
 [ext_resource type="AudioStream" uid="uid://dhqon1qh3mrjf" path="res://art/Die_sound.wav" id="11_ijqkr"]
+[ext_resource type="AudioStream" uid="uid://csft6pni2rbqp" path="res://art/Kill_sound.wav" id="12_8d24f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ghgj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,6 +36,26 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_8svbj"]
 size = Vector3(50, 2, 50)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1con"]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_ckvwa")
+metallic = 0.31
+metallic_specular = 1.0
+metallic_texture = ExtResource("5_5s6ug")
+roughness = 0.58
+roughness_texture = ExtResource("7_vb2yy")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("6_2j8ea")
+clearcoat_enabled = true
+clearcoat = 0.0
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("3_8ewu1")
+heightmap_texture = ExtResource("4_jeowj")
+uv1_scale = Vector3(0.105, 0.105, 0.105)
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stmql"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.443137, 0.937255, 0.443137, 1)
@@ -38,6 +66,14 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_tuyct"]
 material = SubResource("StandardMaterial3D_stmql")
 size = Vector3(20, 2, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3sqc"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_dbg7r")
+uv1_scale = Vector3(0.04, 0.04, 0.04)
+uv1_offset = Vector3(2.03, 0, -0.355)
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt4ac"]
 vertex_color_use_as_albedo = true
@@ -52,7 +88,7 @@ size = Vector3(50, 2, 50)
 [sub_resource type="Curve3D" id="Curve3D_vsoiy"]
 bake_interval = 1.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.5, -10, 0, 0, 0, 0, 0, 0, 0, 0.5, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -60,7 +96,7 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_qps20"]
 bake_interval = 1.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -68,7 +104,7 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_td1yb"]
 bake_interval = 1.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.5, 10, 0, 0, 0, 0, 0, 0, 0, 0.5, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -76,10 +112,58 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_sooft"]
 bake_interval = 1.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_eay2a"]
+
+[sub_resource type="Gradient" id="Gradient_56roc"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.462745, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m2jau"]
+gradient = SubResource("Gradient_56roc")
+
+[sub_resource type="Gradient" id="Gradient_noiug"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_stexj"]
+gradient = SubResource("Gradient_noiug")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7mtyh"]
+
+[sub_resource type="Gradient" id="Gradient_5qveb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(7.21961e-08, 0.672275, 9.62615e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_grvnx"]
+gradient = SubResource("Gradient_5qveb")
+
+[sub_resource type="Gradient" id="Gradient_xqju1"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t6ivp"]
+gradient = SubResource("Gradient_xqju1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgdlv"]
+
+[sub_resource type="Gradient" id="Gradient_k3opw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pjex0"]
+gradient = SubResource("Gradient_k3opw")
+
+[sub_resource type="Gradient" id="Gradient_v1rtg"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n5ad6"]
+gradient = SubResource("Gradient_v1rtg")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k1hyq"]
 radial_segments = 128
@@ -109,8 +193,10 @@ environment = SubResource("Environment_o3320")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(1, 0.886275, 0.792157, 1)
 shadow_enabled = true
 directional_shadow_split_1 = 0.01
+directional_shadow_split_2 = 0.03
 directional_shadow_split_3 = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -127,27 +213,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_8svbj")
 
 [node name="PlayAreaMesh" type="MeshInstance3D" parent="Floor"]
+material_override = SubResource("StandardMaterial3D_g1con")
 mesh = SubResource("BoxMesh_tuyct")
 
 [node name="ExtendedFloorMesh" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+material_override = SubResource("StandardMaterial3D_m3sqc")
 mesh = SubResource("BoxMesh_7rei3")
 skeleton = NodePath("")
 
 [node name="Player" parent="." instance=ExtResource("3_ayk8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="SwordMesh" parent="Player/WeaponPivot" index="0"]
-transform = Transform3D(3.27608e-12, 7.3249e-06, 1, 0.25, -7.3249e-06, -9.9245e-21, 9.04998e-07, 2.02346, -3.61999e-06, 0, 0, -1.025)
-
-[node name="GunMesh" parent="Player/WeaponPivot" index="1"]
-transform = Transform3D(-3.61999e-06, -1, -3.61999e-06, 0, -3.61999e-06, 1, -1, 3.61999e-06, 1.31043e-11, 0, 0, 0.2)
-
 [node name="KickMesh" parent="Player/WeaponPivot" index="2"]
-transform = Transform3D(1.91069e-15, 3.49691e-08, 1, 1, -3.49691e-08, -4.61653e-21, 4.37114e-08, 0.8, -4.37114e-08, 0, 0, 0.12)
-
-[node name="OpenBook1" parent="Player/WeaponPivot/MagicMesh" index="0"]
-transform = Transform3D(0.065, 0, 0, 0, 0.0424749, -0.0492024, 0, 0.0492024, 0.0424749, 0, -0.035061, -0.0738543)
+transform = Transform3D(1.91069e-15, 3.49691e-08, 1, 1, -3.49691e-08, -4.53193e-21, 4.37114e-08, 0.8, -4.37114e-08, 0, 0, 0.12)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -323,9 +402,9 @@ script = ExtResource("5_hsp1v")
 [node name="ActionIcon2" type="TextureRect" parent="UserInterface/ModesPanel"]
 layout_mode = 0
 offset_left = -7.0
-offset_top = 122.0
+offset_top = 146.0
 offset_right = 93.0
-offset_bottom = 218.0
+offset_bottom = 242.0
 script = ExtResource("7_ai84e")
 action_name = &"gun_mode"
 favor_mouse = false
@@ -343,9 +422,9 @@ script = ExtResource("5_hsp1v")
 [node name="ActionIcon3" type="TextureRect" parent="UserInterface/ModesPanel"]
 layout_mode = 0
 offset_left = -7.0
-offset_top = 204.0
+offset_top = 252.0
 offset_right = 93.0
-offset_bottom = 300.0
+offset_bottom = 348.0
 script = ExtResource("7_ai84e")
 action_name = &"kick_mode"
 favor_mouse = false
@@ -363,9 +442,9 @@ script = ExtResource("5_hsp1v")
 [node name="ActionIcon4" type="TextureRect" parent="UserInterface/ModesPanel"]
 layout_mode = 0
 offset_left = -7.0
-offset_top = 286.0
+offset_top = 358.0
 offset_right = 93.0
-offset_bottom = 382.0
+offset_bottom = 454.0
 script = ExtResource("7_ai84e")
 action_name = &"magic_mode"
 favor_mouse = false
@@ -400,62 +479,115 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/font_size = 35
 text = "Sword"
 vertical_alignment = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="UserInterface/ModesPanel/Label2"]
+show_behind_parent = true
+position = Vector2(36, 50)
+scale = Vector2(22.6667, 22.6667)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 2, 0, 1, -1.5)
+
+[node name="Polygon2D2" type="Polygon2D" parent="UserInterface/ModesPanel/Label2/Polygon2D"]
+show_behind_parent = true
+position = Vector2(-0.308822, 0.176471)
+scale = Vector2(1.30147, 1.26471)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 2, 0, 1, -1.5)
+
 [node name="Label3" type="Label" parent="UserInterface/ModesPanel"]
 layout_mode = 0
 offset_left = 84.0
-offset_top = 136.0
+offset_top = 160.0
 offset_right = 232.0
-offset_bottom = 204.0
+offset_bottom = 228.0
 theme = ExtResource("8_rpvn3")
 theme_override_colors/font_color = Color(0.945, 0.505972, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/font_size = 35
 text = "Gun"
 vertical_alignment = 1
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UserInterface/ModesPanel/Label3"]
+show_behind_parent = true
+position = Vector2(41, 35)
+scale = Vector2(39.83, 39.83)
+mesh = SubResource("SphereMesh_eay2a")
+texture = SubResource("GradientTexture1D_m2jau")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="UserInterface/ModesPanel/Label3/MeshInstance2D"]
+show_behind_parent = true
+scale = Vector2(1.17, 1.17)
+mesh = SubResource("SphereMesh_eay2a")
+texture = SubResource("GradientTexture1D_stexj")
+
 [node name="Label4" type="Label" parent="UserInterface/ModesPanel"]
 layout_mode = 0
 offset_left = 84.0
-offset_top = 218.0
+offset_top = 266.0
 offset_right = 232.0
-offset_bottom = 286.0
+offset_bottom = 334.0
 theme = ExtResource("8_rpvn3")
 theme_override_colors/font_color = Color(0, 0.611765, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/font_size = 35
 text = "Kick"
 vertical_alignment = 1
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UserInterface/ModesPanel/Label4"]
+show_behind_parent = true
+position = Vector2(43, 36)
+scale = Vector2(26.005, 23.223)
+mesh = SubResource("CapsuleMesh_7mtyh")
+texture = SubResource("GradientTexture1D_grvnx")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="UserInterface/ModesPanel/Label4/MeshInstance2D"]
+show_behind_parent = true
+scale = Vector2(1.16, 1.16)
+mesh = SubResource("CapsuleMesh_7mtyh")
+texture = SubResource("GradientTexture1D_t6ivp")
+
 [node name="Label5" type="Label" parent="UserInterface/ModesPanel"]
 layout_mode = 0
 offset_left = 84.0
-offset_top = 300.0
+offset_top = 372.0
 offset_right = 232.0
-offset_bottom = 368.0
+offset_bottom = 440.0
 theme = ExtResource("8_rpvn3")
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 7
+theme_override_constants/outline_size = 9
 theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/font_size = 35
 text = "Magic"
 vertical_alignment = 1
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UserInterface/ModesPanel/Label5"]
+show_behind_parent = true
+position = Vector2(57, 36)
+scale = Vector2(36.55, 36.55)
+mesh = SubResource("BoxMesh_wgdlv")
+texture = SubResource("GradientTexture1D_pjex0")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="UserInterface/ModesPanel/Label5/MeshInstance2D"]
+show_behind_parent = true
+scale = Vector2(1.195, 1.195)
+mesh = SubResource("BoxMesh_wgdlv")
+texture = SubResource("GradientTexture1D_n5ad6")
 
 [node name="ScoresPanel" type="Panel" parent="UserInterface"]
 show_behind_parent = true
@@ -533,20 +665,18 @@ texture = SubResource("GradientTexture1D_05q13")
 [node name="UserInterface2" parent="." instance=ExtResource("9_j7kmx")]
 
 [node name="InfoLabel" parent="UserInterface2/StartLabel" index="0"]
-offset_left = 71.0
-offset_top = 78.0
-offset_right = 533.0
-offset_bottom = 202.0
+offset_left = -231.0
+offset_top = 24.5
+offset_right = 231.0
+offset_bottom = 148.5
 
 [node name="TutLabel1" parent="UserInterface2/StartLabel" index="3"]
-layout_mode = 0
 offset_left = -232.0
 offset_top = 280.0
 offset_right = 307.0
 offset_bottom = 637.0
 
 [node name="TutLabel2" parent="UserInterface2/StartLabel" index="5"]
-layout_mode = 0
 offset_left = 368.0
 offset_top = 280.0
 offset_right = 798.0
@@ -561,10 +691,10 @@ text = "Current: 0"
 horizontal_alignment = 1
 
 [node name="PressEnter" parent="UserInterface2/Retry" index="0"]
-offset_left = 409.0
-offset_top = 276.5
-offset_right = 871.001
-offset_bottom = 319.5
+offset_left = -231.0
+offset_top = -83.5
+offset_right = 231.001
+offset_bottom = -40.5
 
 [node name="FinalScore" parent="UserInterface2/Retry" index="2"]
 offset_left = 1080.0
@@ -592,6 +722,10 @@ autoplay = false
 
 [node name="DieSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ijqkr")
+volume_db = -15.0
+
+[node name="KillSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_8d24f")
 volume_db = -15.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

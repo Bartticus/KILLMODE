@@ -1,5 +1,9 @@
-MeshInstance3D
 AnimationPlayer
+MeshInstance2D
+Timer
+Polygon2D
+Sprite2D
+MeshInstance3D
 Camera3D
 Area3D
 GPUParticles3D
@@ -8,7 +12,3 @@ RigidBody3D
 PhysicalBone3D
 Skeleton3D
 AudioStreamPlayer
-MeshInstance2D
-Label
-TextEdit
-ActionIcon

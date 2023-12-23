@@ -1,22 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfl572qasiebb"]
+[gd_scene load_steps=11 format=3 uid="uid://cfl572qasiebb"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_8e22k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_joc22"]
 size = Vector3(0.9, 0.9, 0.9)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnb8q"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0yv3c"]
 resource_local_to_scene = true
 vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rcrvk"]
+_surfaces = [{
+"aabb": AABB(-0.707107, -0.5, -0.707107, 1.41421, 1.00001, 1.41421),
+"attribute_data": PackedByteArray(255, 63, 255, 191, 255, 63, 142, 130, 112, 125, 255, 191, 255, 63, 255, 191, 112, 125, 255, 191, 255, 63, 111, 253, 111, 253, 255, 191, 255, 191, 142, 130, 255, 191, 111, 253, 142, 130, 255, 191, 255, 63, 255, 191, 255, 63, 111, 253, 143, 2, 255, 191, 255, 63, 255, 191, 143, 2, 255, 191, 255, 63, 142, 130),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 8, 0, 7, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0),
+"material": SubResource("StandardMaterial3D_0yv3c"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(255, 127, 254, 255, 255, 127, 93, 234, 0, 0, 0, 0, 0, 0, 93, 234, 255, 255, 0, 0, 0, 0, 93, 234, 255, 127, 254, 255, 255, 127, 221, 193, 255, 255, 0, 0, 0, 0, 221, 193, 255, 255, 0, 0, 255, 255, 221, 193, 255, 255, 0, 0, 0, 0, 2, 58, 0, 0, 0, 0, 0, 0, 2, 58, 255, 255, 0, 0, 255, 255, 2, 58, 0, 0, 0, 0, 255, 255, 2, 58, 255, 127, 254, 255, 255, 127, 227, 176, 255, 255, 0, 0, 255, 255, 227, 176, 0, 0, 0, 0, 255, 255, 227, 176, 255, 127, 254, 255, 255, 127, 51, 211, 0, 0, 0, 0, 255, 255, 51, 211, 0, 0, 0, 0, 0, 0, 51, 211, 7, 214, 176, 72, 7, 214, 176, 72, 7, 214, 176, 72, 32, 186, 250, 74, 32, 186, 250, 74, 32, 186, 250, 74, 254, 57, 0, 99, 254, 57, 0, 99, 254, 57, 0, 99, 254, 57, 0, 99, 56, 234, 183, 37, 56, 234, 183, 37, 56, 234, 183, 37, 75, 241, 243, 188, 75, 241, 243, 188, 75, 241, 243, 188)
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fypb"]
+resource_local_to_scene = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.647, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mpufs"]
+material = SubResource("StandardMaterial3D_2fypb")
+radius = 0.61
+height = 0.66
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgi8o"]
+resource_local_to_scene = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.709804, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l66of"]
+material = SubResource("StandardMaterial3D_fgi8o")
+radius = 0.465
+height = 1.59
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2qkq"]
+resource_local_to_scene = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_272yf"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_tnb8q")
+material = SubResource("StandardMaterial3D_y2qkq")
 size = Vector3(0.9, 0.9, 0.9)
-
-[sub_resource type="SphereMesh" id="SphereMesh_mpufs"]
-radius = 0.45
-height = 0.9
 
 [node name="Enemy" type="RigidBody3D"]
 collision_layer = 4
@@ -27,9 +63,20 @@ script = ExtResource("1_8e22k")
 [node name="EnemyHitBox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_joc22")
 
-[node name="EnemyMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_272yf")
+[node name="EnemySword" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.69, 0, 0, 0, 1.145, 0, 0, 0, 0.655, 0, 0.141328, 0)
+visible = false
+mesh = SubResource("ArrayMesh_rcrvk")
 
-[node name="EnemySphere" type="MeshInstance3D" parent="."]
+[node name="EnemyGun" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("SphereMesh_mpufs")
+
+[node name="EnemyKick" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368947, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_l66of")
+
+[node name="EnemyMagic" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_272yf")

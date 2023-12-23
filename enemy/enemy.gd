@@ -5,16 +5,20 @@ extends RigidBody3D
 @export var path_follow: PathFollow3D
 
 func _ready():
-	#Match enemy mode to corresponding color
-	match enemy_mode:
-		"Sword":
-			$EnemyMesh.mesh.material.albedo_color = Color.RED
-		"Gun":
-			$EnemyMesh.mesh.material.albedo_color = Color.ORANGE
-		"Kick":
-			$EnemyMesh.mesh.material.albedo_color = Color.GREEN
-		"Magic":
-			$EnemyMesh.mesh.material.albedo_color = Color.BLUE
+	#Show enemy mesh
+	var enemy_mesh = get_node("Enemy" + enemy_mode)
+	enemy_mesh.show()
+	
+	##Match enemy mode to corresponding color
+	#match enemy_mode:
+		#"Sword":
+			#enemy_mesh.mesh.material.albedo_color = Color.RED
+		#"Gun":
+			#enemy_mesh.mesh.material.albedo_color = Color.ORANGE
+		#"Kick":
+			#enemy_mesh.mesh.material.albedo_color = Color.GREEN
+		#"Magic":
+			#enemy_mesh.mesh.material.albedo_color = Color.BLUE
 	
 	#Spawn enemy at the start of it's chosen path
 	global_position = path_follow.position
