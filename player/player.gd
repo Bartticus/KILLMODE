@@ -1,5 +1,5 @@
 class_name Player
-extends Character
+extends CharacterBody3D
 
 signal die
 signal kill
@@ -8,17 +8,12 @@ signal kill
 @onready var arcane_scene = preload("res://player/arcane_bolt.tscn")
 
 #Player variables
-var speed: float = 10.0
-var h_accel: float = 50.0
-var movement_vector := Vector3.ZERO
 var attack_range: float
-var attack_mode: String = Global.combat_modes[0]
 var sword_swung: bool = false
+@export var attack_mode: String = Global.combat_modes[0]
 
 func _physics_process(_delta):
-	Global.debug.add_property("Attack mode", attack_mode)
 	attack_mode_manager()
-	
 	move_and_slide()
 
 func attack_mode_manager():
@@ -40,13 +35,13 @@ func attack_mode_manager():
 		"Kick":
 			$WeaponPivot/KickMesh.show()
 			attack_range = 3.0
-			attack_range_material.emission = Color.DARK_GREEN
+			attack_range_material.emission = Color.GREEN
 			attack_range_material.albedo_color = Color(0,1,0,0.4)
 		"Magic":
 			$WeaponPivot/MagicMesh.show()
 			attack_range = 7.0
 			attack_range_material.emission = Color.BLUE
-			attack_range_material.albedo_color = Color(0,0,1,0.4)
+			attack_range_material.albedo_color = Color(0,0,1,0.6)
 	
 	$AttackRangeMesh.mesh.inner_radius = attack_range #Set attack range inner/outer radii
 	$AttackRangeMesh.mesh.outer_radius = attack_range + 0.1
@@ -132,6 +127,7 @@ func spawn_rays(direction: Vector3): #Spawn rays as a hitbox for enemy detection
 func kill_enemy(spawn_location: Vector3):
 	kill.emit() #Emit kill signal for score keeping in UI
 	
+	play_sound()
 	#Start spawning particles where enemy died
 	var particles = hit_particles.instantiate()
 	add_child(particles)
@@ -147,17 +143,19 @@ func kill_enemy(spawn_location: Vector3):
 	await get_tree().create_timer(3).timeout
 	particles.queue_free()
 
-func _input(_event):
-	#Checking inputs for attacks in each direction
-	if Input.is_action_just_pressed("attack_left"):
-		attack(Vector3.LEFT)
-	if Input.is_action_just_pressed("attack_right"):
-		attack(Vector3.RIGHT)
-	if Input.is_action_just_pressed("attack_forward"):
-		attack(Vector3.FORWARD)
-	if Input.is_action_just_pressed("attack_backward"):
-		attack(Vector3.BACK)
+func play_sound():
+	var kill_sound = get_node("/root/Main/KillSound")
+	kill_sound.play()
 	
+	#Randomize kill sound effect pitch
+	var last_pitch = kill_sound.pitch_scale
+	while abs(kill_sound.pitch_scale - last_pitch) < 0.1:
+		randomize()
+		kill_sound.pitch_scale = randf_range(0.8, 1.2)
+	
+	last_pitch = kill_sound.pitch_scale
+
+func _input(_event):
 	#Checking inputs for switching attack modes
 	if Input.is_action_just_pressed("sword_mode"):
 		attack_mode = Global.combat_modes[0]
@@ -167,7 +165,47 @@ func _input(_event):
 		attack_mode = Global.combat_modes[2]
 	if Input.is_action_just_pressed("magic_mode"):
 		attack_mode = Global.combat_modes[3]
+	
+	if !$ActionTimer.is_stopped(): return #Prevent player from spamming attacks
+	#Checking inputs for attacks in each direction
+	if Input.is_action_just_pressed("attack_left"):
+		attack(Vector3.LEFT)
+		$ActionTimer.start()
+	if Input.is_action_just_pressed("attack_right"):
+		attack(Vector3.RIGHT)
+		$ActionTimer.start()
+	if Input.is_action_just_pressed("attack_forward"):
+		attack(Vector3.FORWARD)
+		$ActionTimer.start()
+	if Input.is_action_just_pressed("attack_backward"):
+		attack(Vector3.BACK)
+		$ActionTimer.start()
+
+func fireworks():
+	var particles = hit_particles.instantiate()
+	get_parent().add_child(particles) #Add child to main so particles persist after player frees
+	
+	particles.get_child(0).amount = 200
+	particles.get_child(1).amount = 600
+	particles.get_child(0).explosiveness = 0
+	particles.get_child(0).speed_scale = 0.5
+	#particles.set_scale(Vector3(1.5,1.5,1.5))
+	particles.get_child(0).emitting = true
+	
+	#Timer to wait out artifacting
+	particles.get_child(1).hide()
+	await get_tree().create_timer(0.1).timeout
+	particles.get_child(1).show()
 
 func _on_player_hurt_area_body_entered(_body):
 	die.emit() #Emit die signal for resetting UI
+	
+	#Hide player and disable collisions while waiting for fireworks
+	hide()
+	$PlayerHurtArea.set_deferred("monitoring", false)
+	set_collision_mask_value(3, false)
+	
+	fireworks()
+	await get_tree().create_timer(0.1).timeout #Allows fireworks timer to lapse
+	
 	queue_free()

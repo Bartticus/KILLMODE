@@ -12,24 +12,21 @@ func _ready():
 	$Player.die.connect(_on_player_die)
 
 func reduce_timers(): #Decrease timer lengths to increase difficulty over time
-	var new_wait_time = clampf($SpawnTimer.wait_time - 0.01, 0.8, 1.0)
-	
-	#$UserInterface/AnimationPlayer.speed_scale = 1 / (new_wait_time)
-	#$UserInterface/AnimationPlayer.play("BeatToCenter")
+	var new_wait_time = clampf($SpawnTimer.wait_time - 0.01, 0.5, 1.3)
+	#Set new wait times, shorter each time
 	$SpawnTimer.start(new_wait_time)
 	$MoveTimer.start(new_wait_time)
 	
 	await $MoveTimer.timeout
 	
-	
-	reduce_timers()
+	reduce_timers() #Repeat function
 
 func _on_spawn_timer_timeout(): #Start spawning enemies when timer runs out
 	var enemy_scene: PackedScene = preloaded_enemy
 	var enemy: Enemy = enemy_scene.instantiate()
 	
-	var enemy_mode = randi_range(0,3) #Pick enemy type, randomly for now
-	var enemy_path: Path3D = [ #Pick enemy path to spawn on, also randomly
+	var enemy_mode = randi_range(0,3) #Pick enemy type randomly
+	var enemy_path: Path3D = [ #Pick enemy path to spawn on randomly
 		$MoveTimer/NorthPath,
 		$MoveTimer/EastPath,
 		$MoveTimer/SouthPath,
@@ -46,14 +43,12 @@ func _on_spawn_timer_timeout(): #Start spawning enemies when timer runs out
 	
 
 func _unhandled_input(event):
-	#Quit on escape
 	if Input.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-	#Reload on control
+		get_tree().quit() #Quit on escape
 	if event.is_action_pressed("ui_accept") and $UserInterface2/Retry.visible:
-		get_tree().reload_current_scene()
+		get_tree().reload_current_scene() #Reload on control
 	elif event.is_action_pressed("ui_accept") and $UserInterface2/StartLabel.visible:
-		$UserInterface2/GameStart.play()
+		$UserInterface2/GameStart.play() #Start game on enter
 		$UserInterface2/StartLabel.hide()
 		$UserInterface2/ScoreLabel.show()
 		$UserInterface2/FloatingText.show()
@@ -64,7 +59,7 @@ func _unhandled_input(event):
 func _on_player_die():
 	$MusicPlayer.stop()
 	$DieSound.play()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1).timeout #Wait a second for dramatic effect
 	$UserInterface2/ScoreLabel.hide()
 	$UserInterface2/FloatingText.hide()
 	$UserInterface2/Retry.show()

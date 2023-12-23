@@ -486,11 +486,19 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta): #Custom entry to flash the border of the button when pressed
 	if !InputMap.has_action(action_name): return
+	
 	var button_flash = get_child(0)
 	if Input.is_action_pressed(action_name):
 		button_flash.show()
 	else:
 		button_flash.hide()
+	
+	#Keep flash showing to match current player mode
+	var player = get_node_or_null("/root/Main/Player")
+	if player == null: return #Check if player exists
+	var current_attack_mode = player.attack_mode.to_lower() + "_mode"
+	if current_attack_mode == action_name:
+		button_flash.show()
 
 func _notification(what: int) -> void:
 	match what:
