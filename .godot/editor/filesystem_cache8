@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1703370648
+::res://::1708807012
 BootSplash.PNG::CompressedTexture2D::8596669156961373114::1702702457::1702702483::1::::<><>::
-export_presets.cfg::TextFile::-1::1702706053::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1703374209::0::1::::<><>::
 Icon.PNG::CompressedTexture2D::8594550505374203626::1702702530::1702702542::1::::<><>::
 icon.svg::CompressedTexture2D::8292389073636633840::1701390024::1701390039::1::::<><>::
 README.md::TextFile::-1::1703118692::0::1::::<><>::
@@ -479,7 +479,7 @@ texture_10.png::CompressedTexture2D::5836196760353158307::1702147290::1702147293
 texture_11.png::CompressedTexture2D::3330907082596329132::1702147290::1702147293::1::::<><>::
 texture_12.png::CompressedTexture2D::5317162873119212801::1702147291::1702147293::1::::<><>::
 texture_13.png::CompressedTexture2D::8049463681911409990::1702147291::1702147293::1::::<><>::
-::res://art/::1703372755
+::res://art/::1703373802
 11539_leg_01_V1.obj::Mesh::5955504575801498803::1703182397::1703182399::1::::<><>::
 deagle.obj::Mesh::8246244279892986917::1703183823::1703183823::1::::<><>::
 Die_sound.wav::AudioStreamWAV::7684488644509911803::1679119967::1702694295::1::::<><>::
@@ -497,20 +497,24 @@ Sting-Sword-lowpoly.obj::Mesh::6911473915068601356::1703125406::1703125407::1:::
 Tutorial-1.PNG::CompressedTexture2D::2044653239415748697::1703208502::1703208503::1::::<><>::
 Tutorial-2.PNG::CompressedTexture2D::8843193038474540817::1703210009::1703210127::1::::<><>::
 Wepa.mp3::AudioStreamMP3::2647493830721020955::1678051539::1702694295::1::::<><>::
-::res://enemy/::1703372098
+::res://enemy/::1703372986
 enemy.gd::GDScript::-1::1703291591::0::1::::Enemy<>RigidBody3D<>::
-enemy.tscn::PackedScene::5148373838930669843::1703372098::0::1::::<><>::res://enemy/enemy.gd
+enemy.tscn::PackedScene::5148373838930669843::1703372986::0::1::::<><>::res://enemy/enemy.gd
 pyramid.obj::Mesh::8805618307238234338::1703289416::1703289417::1::::<><>::
-::res://main/::1703372098
+::res://HTML/::1708807019
+index.apple-touch-icon.png::CompressedTexture2D::4661654077456016063::1708807019::1708807027::1::::<><>::
+index.icon.png::CompressedTexture2D::7846227643043623454::1708807019::1708807027::1::::<><>::
+index.png::CompressedTexture2D::8654425792969543588::1708807019::1708807027::1::::<><>::
+::res://main/::1703374021
 main.gd::GDScript::-1::1703369995::0::1::::<>Node<>::
-main.tscn::PackedScene::7412528661394829026::1703372098::0::1::::<><>::uid://c8nq55glypfp8::::res://addons/kenney_prototype_tools/textures/light/texture_07.png<>res://main/main.gd<>uid://c2q2uw6xgb3fx::::res://textures/Sci-fi_Metal_Plate_003_basecolor.jpg<>uid://bax8hex865qv7::::res://textures/Sci-fi_Metal_Plate_003_ambientOcclusion.jpg<>uid://dxqa7er8knhio::::res://player/player.tscn<>uid://bhgq7euew6skx::::res://addons/kenney_prototype_tools/textures/dark/texture_04.png<>uid://bwb27u320c3bj::::res://ui/debug.tres<>uid://dyop6q0u2rhfc::::res://textures/Sci-fi_Metal_Plate_003_height.png<>uid://by5vo41e7wp6p::::res://textures/Sci-fi_Metal_Plate_003_metallic.jpg<>res://scripts/debug.gd<>uid://i374fy3pa74t::::res://textures/Sci-fi_Metal_Plate_003_normal.jpg<>res://addons/ActionIcon/ActionIcon.gd<>uid://b7b2i5s8n8s28::::res://textures/Sci-fi_Metal_Plate_003_roughness.jpg<>uid://dsa3fn15ahaf4::::res://ui/UI.tres<>uid://dx72wh70cgvp3::::res://textures/2k_stars_milky_way.jpg<>uid://hxsl7u6l73qd::::res://ui/user_interface.tscn<>uid://5eeqelnwaggd::::res://ui/music_player.tscn<>uid://dhqon1qh3mrjf::::res://art/Die_sound.wav<>uid://csft6pni2rbqp::::res://art/Kill_sound.wav
-tutorial.tscn::PackedScene::6983259841978561311::1703372098::0::1::::<><>::res://player/player.gd<>uid://c5p773ia8sbom::::res://art/Sting-Sword-lowpoly.obj<>uid://dpqso550j6hvx::::res://art/deagle.obj<>uid://cq35j4sd8xuut::::res://art/11539_leg_01_V1.obj<>uid://6og6qb3crh1u::::res://art/open book 1.obj<>uid://c3p5lg1f0s6l::::res://player/arcane_bolt.tscn
-::res://player/::1703372098
-arcane_bolt.tscn::PackedScene::199145181313067593::1703372098::0::1::::<><>::uid://bu8lo4pd01qkn::::res://addons/kenney_particle_pack/spark_02.png<>uid://b4atfexbvx6bx::::res://addons/kenney_particle_pack/spark_04.png
-bullet.tscn::PackedScene::4449385318730487785::1703372098::0::1::::<><>::
-hit_particles.tscn::PackedScene::1788254696815498091::1703372098::0::1::::<><>::uid://c2d2iph3fc2rp::::res://art/star_06.png
+main.tscn::PackedScene::7412528661394829026::1703374021::0::1::::<><>::uid://c8nq55glypfp8::::res://addons/kenney_prototype_tools/textures/light/texture_07.png<>res://main/main.gd<>uid://c2q2uw6xgb3fx::::res://textures/Sci-fi_Metal_Plate_003_basecolor.jpg<>uid://bax8hex865qv7::::res://textures/Sci-fi_Metal_Plate_003_ambientOcclusion.jpg<>uid://dxqa7er8knhio::::res://player/player.tscn<>uid://bhgq7euew6skx::::res://addons/kenney_prototype_tools/textures/dark/texture_04.png<>uid://bwb27u320c3bj::::res://ui/debug.tres<>uid://dyop6q0u2rhfc::::res://textures/Sci-fi_Metal_Plate_003_height.png<>uid://by5vo41e7wp6p::::res://textures/Sci-fi_Metal_Plate_003_metallic.jpg<>res://scripts/debug.gd<>uid://i374fy3pa74t::::res://textures/Sci-fi_Metal_Plate_003_normal.jpg<>res://addons/ActionIcon/ActionIcon.gd<>uid://b7b2i5s8n8s28::::res://textures/Sci-fi_Metal_Plate_003_roughness.jpg<>uid://dsa3fn15ahaf4::::res://ui/UI.tres<>uid://dx72wh70cgvp3::::res://textures/2k_stars_milky_way.jpg<>uid://hxsl7u6l73qd::::res://ui/user_interface.tscn<>uid://5eeqelnwaggd::::res://ui/music_player.tscn<>uid://dhqon1qh3mrjf::::res://art/Die_sound.wav<>uid://csft6pni2rbqp::::res://art/Kill_sound.wav
+tutorial.tscn::PackedScene::6983259841978561311::1703372986::0::1::::<><>::res://player/player.gd<>uid://c5p773ia8sbom::::res://art/Sting-Sword-lowpoly.obj<>uid://dpqso550j6hvx::::res://art/deagle.obj<>uid://cq35j4sd8xuut::::res://art/11539_leg_01_V1.obj<>uid://6og6qb3crh1u::::res://art/open book 1.obj<>uid://c3p5lg1f0s6l::::res://player/arcane_bolt.tscn
+::res://player/::1703372986
+arcane_bolt.tscn::PackedScene::199145181313067593::1703372986::0::1::::<><>::uid://bu8lo4pd01qkn::::res://addons/kenney_particle_pack/spark_02.png<>uid://b4atfexbvx6bx::::res://addons/kenney_particle_pack/spark_04.png
+bullet.tscn::PackedScene::4449385318730487785::1703372986::0::1::::<><>::
+hit_particles.tscn::PackedScene::1788254696815498091::1703372986::0::1::::<><>::uid://c2d2iph3fc2rp::::res://art/star_06.png
 player.gd::GDScript::-1::1703371798::0::1::::Player<>CharacterBody3D<>::
-player.tscn::PackedScene::8806692882092288418::1703372098::0::1::::<><>::res://player/player.gd<>uid://c5p773ia8sbom::::res://art/Sting-Sword-lowpoly.obj<>uid://cq35j4sd8xuut::::res://art/11539_leg_01_V1.obj<>uid://dpqso550j6hvx::::res://art/deagle.obj<>uid://6og6qb3crh1u::::res://art/open book 1.obj
+player.tscn::PackedScene::8806692882092288418::1703372986::0::1::::<><>::res://player/player.gd<>uid://c5p773ia8sbom::::res://art/Sting-Sword-lowpoly.obj<>uid://cq35j4sd8xuut::::res://art/11539_leg_01_V1.obj<>uid://dpqso550j6hvx::::res://art/deagle.obj<>uid://6og6qb3crh1u::::res://art/open book 1.obj
 ::res://scripts/::1702677243
 debug.gd::GDScript::-1::1702677243::0::1::::Debug<>PanelContainer<>::
 global.gd::GDScript::-1::1702518727::0::1::::<>Node<>::
@@ -522,11 +526,11 @@ Sci-fi_Metal_Plate_003_height.png::CompressedTexture2D::8873662581390644672::170
 Sci-fi_Metal_Plate_003_metallic.jpg::CompressedTexture2D::4134185885157892377::1703371002::1703371062::1::::<><>::
 Sci-fi_Metal_Plate_003_normal.jpg::CompressedTexture2D::621308358994033245::1703371002::1703371015::1::::<><>::
 Sci-fi_Metal_Plate_003_roughness.jpg::CompressedTexture2D::4636183308045174775::1703371002::1703371057::1::::<><>::
-::res://ui/::1703372098
+::res://ui/::1703372986
 debug.tres::Theme::3934337220675326875::1703361344::0::1::::<><>::uid://d1j1wkoywnkwy::::res://ui/debug_panel_style.tres
 debug_panel_style.tres::StyleBoxFlat::9004369862713655028::1703361344::0::1::::<><>::
 floating_text.tscn::PackedScene::4225329834139577510::1703188307::0::1::::<><>::
 music_player.tscn::PackedScene::2114194488537071015::1703188307::0::1::::<><>::
 UI.tres::Theme::8424370965662676287::1703358418::0::1::::<><>::
 user_interface.gd::GDScript::-1::1703122073::0::1::::<>Control<>::
-user_interface.tscn::PackedScene::539916856480133155::1703372098::0::1::::<><>::uid://dsa3fn15ahaf4::::res://ui/UI.tres<>res://ui/user_interface.gd<>uid://b1g1thgld2pac::::res://ui/floating_text.tscn<>uid://c6j2156figkdo::::res://art/Game_start.wav<>uid://4epe08q5cqsf::::res://art/Tutorial-1.PNG<>uid://dx8ydkry7aseb::::res://art/Tutorial-2.PNG
+user_interface.tscn::PackedScene::539916856480133155::1703372986::0::1::::<><>::uid://dsa3fn15ahaf4::::res://ui/UI.tres<>res://ui/user_interface.gd<>uid://b1g1thgld2pac::::res://ui/floating_text.tscn<>uid://c6j2156figkdo::::res://art/Game_start.wav<>uid://4epe08q5cqsf::::res://art/Tutorial-1.PNG<>uid://dx8ydkry7aseb::::res://art/Tutorial-2.PNG
