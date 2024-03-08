@@ -2,7 +2,9 @@
 .import/
 export.cfg
 export_presets.cfg
-KILLMODE.exe
+HTML/
+*.exe
+*.zip
 
 # Imported translations (automatically generated from CSV files)
 *.translation
